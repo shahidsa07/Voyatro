@@ -1,98 +1,167 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
+import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
 
 export default function HomeScreen() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
+    <ScrollView style={styles.container}>
+      <ThemedView style={styles.searchContainer}>
+        <View>
+          <ThemedText type="default">Continue your search</ThemedText>
+          <ThemedText type="title">to Bangalore</ThemedText>
+        </View>
+        <TouchableOpacity>
+          <Text style={styles.arrow}>→</Text>
+        </TouchableOpacity>
       </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      <View style={styles.categories}>
+        <TouchableOpacity style={styles.category}>
+          <Image source={{ uri: 'https://img.icons8.com/ios-filled/50/000000/airplane-mode-on.png' }} style={styles.categoryIcon} />
+          <ThemedText>FLIGHTS</ThemedText>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.category}>
+          <Image source={{ uri: 'https://img.icons8.com/ios-filled/50/000000/building.png' }} style={styles.categoryIcon} />
+          <ThemedText>HOTELS</ThemedText>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.category}>
+          <Image source={{ uri: 'https://img.icons8.com/ios-filled/50/000000/beach.png' }} style={styles.categoryIcon} />
+          <ThemedText>HOLIDAYS</ThemedText>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.category}>
+          <Image source={{ uri: 'https://img.icons8.com/ios-filled/50/000000/train.png' }} style={styles.categoryIcon} />
+          <ThemedText>TRAINS/BUS</ThemedText>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.tabs}>
+        <TouchableOpacity style={[styles.tab, styles.activeTab]}>
+          <Text style={styles.activeTabText}>All Offers</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.tab}>
+          <Text style={styles.tabText}>Flights</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.tab}>
+          <Text style={styles.tabText}>Hotels</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.tab}>
+          <Text style={styles.tabText}>Holidays</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.tab}>
+          <Text style={styles.tabText}>Trains/Bus</Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.offers}>
+        <View style={[styles.offerCard, { backgroundColor: '#4A90E2' }]}>
+          <View style={styles.offerHeader}>
+            <ThemedText type="defaultSemiBold">HOLIDAYS</ThemedText>
+            <ThemedText type="default">22H:30M</ThemedText>
+          </View>
+          <Image source={{ uri: 'https://i.imgur.com/8i2bD36.png' }} style={styles.offerImage} />
+          <View style={styles.offerDetails}>
+            <View style={styles.offerLogos}>
+                <Image source={{ uri: 'https://i.imgur.com/2Y3tW6b.png' }} style={styles.offerLogo} />
+                <Image source={{ uri: 'https://i.imgur.com/sC6a7Vp.png' }} style={styles.offerLogo} />
+            </View>
+            <ThemedText type="subtitle">GET 10% OFF</ThemedText>
+            <ThemedText type="default">On all Domestic hotels - On all Credit & Debit cards</ThemedText>
+          </View>
+        </View>
+        <View style={[styles.offerCard, { backgroundColor: '#E24A4A' }]}>
+          <View style={styles.offerHeader}>
+            <ThemedText type="defaultSemiBold">FLIGHTS</ThemedText>
+          </View>
+           <Image source={{ uri: 'https://i.imgur.com/sC6a7Vp.png' }} style={styles.offerLogo} />
+          <View style={styles.offerDetails}>
+            <ThemedText type="subtitle">GET 10% OFF</ThemedText>
+            <ThemedText type="default">On Air Asia flights credit cards</ThemedText>
+          </View>
+        </View>
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  searchContainer: {
+    padding: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#F2F2F2',
+  },
+  arrow: {
+    fontSize: 24,
+  },
+  categories: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingVertical: 20,
+    backgroundColor: '#fff',
+  },
+  category: {
+    alignItems: 'center',
+  },
+  categoryIcon: {
+      width:40,
+      height:40,
+      marginBottom: 5,
+  },
+  tabs: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    paddingVertical: 10,
+    backgroundColor: '#F2F2F2',
+  },
+  tab: {
+    padding: 10,
+    borderRadius: 20,
+  },
+  activeTab: {
+    backgroundColor: '#007AFF',
+  },
+  tabText: {
+    color: '#000',
+  },
+  activeTabText: {
+    color: '#fff',
+  },
+  offers: {
+    padding: 20,
+  },
+  offerCard: {
+    borderRadius: 20,
+    marginBottom: 20,
+    padding: 20,
+  },
+  offerHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 10,
+  },
+  offerImage: {
+    width: '100%',
+    height: 150,
+    resizeMode: 'contain',
+    marginBottom: 10,
+  },
+  offerDetails: {
+    // No specific styles needed here for now
+  },
+   offerLogos: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  offerLogo: {
+    width: 30,
+    height: 30,
+    marginRight: 10,
+    resizeMode: 'contain',
   },
 });
