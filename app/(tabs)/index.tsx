@@ -1,15 +1,15 @@
 
-import { StyleSheet, View, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function HomeScreen() {
   return (
     <ScrollView style={styles.container}>
       <ThemedView style={styles.searchContainer}>
         <View>
-          <ThemedText type="default" lightColor="black">Continue your search</ThemedText>
-          <ThemedText type="title">to Bangalore</ThemedText>
+          <ThemedText type="default" darkColor="black">Continue your search</ThemedText>
+          <ThemedText type="title" darkColor="black">to Wayanad</ThemedText>
         </View>
         <TouchableOpacity>
           <Text style={styles.arrow}>→</Text>
@@ -17,30 +17,27 @@ export default function HomeScreen() {
       </ThemedView>
 
       <View style={styles.categories}>
-        <TouchableOpacity style={styles.category}>
-          <Image source={{ uri: 'https://img.icons8.com/ios-filled/50/000000/airplane-mode-on.png' }} style={styles.categoryIcon} />
-          <ThemedText>FLIGHTS</ThemedText>
+      <TouchableOpacity style={styles.category}>
+          <Image source={{ uri: 'https://img.icons8.com/ios-filled/50/E24A4A/bus.png' }} style={styles.categoryIcon} />
+          <ThemedText darkColor='black'>BUS/TRAVELLER</ThemedText>
         </TouchableOpacity>
         <TouchableOpacity style={styles.category}>
-          <Image source={{ uri: 'https://img.icons8.com/ios-filled/50/000000/building.png' }} style={styles.categoryIcon} />
-          <ThemedText>HOTELS</ThemedText>
+          <Image source={{ uri: 'https://img.icons8.com/ios-filled/50/E24A4A/beach.png' }} style={styles.categoryIcon} />
+          <ThemedText darkColor='black'>HOLIDAY PACKAGES</ThemedText>
         </TouchableOpacity>
         <TouchableOpacity style={styles.category}>
-          <Image source={{ uri: 'https://img.icons8.com/ios-filled/50/000000/beach.png' }} style={styles.categoryIcon} />
-          <ThemedText>HOLIDAYS</ThemedText>
+          <Image source={{ uri: 'https://img.icons8.com/ios-filled/50/E24A4A/building.png' }} style={styles.categoryIcon} />
+          <ThemedText darkColor='black'>RESORTS</ThemedText>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.category}>
-          <Image source={{ uri: 'https://img.icons8.com/ios-filled/50/000000/train.png' }} style={styles.categoryIcon} />
-          <ThemedText>TRAINS/BUS</ThemedText>
-        </TouchableOpacity>
+        {/* <TouchableOpacity style={styles.category}>
+          <Image source={{ uri: 'https://img.icons8.com/ios-filled/50/E24A4A/train.png' }} style={styles.categoryIcon} />
+          <ThemedText darkColor='black'>TRAINS/BUS</ThemedText>
+        </TouchableOpacity> */}
       </View>
 
       <View style={styles.tabs}>
         <TouchableOpacity style={[styles.tab, styles.activeTab]}>
           <Text style={styles.activeTabText}>All Offers</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.tab}>
-          <Text style={styles.tabText}>Flights</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.tab}>
           <Text style={styles.tabText}>Hotels</Text>
@@ -49,7 +46,7 @@ export default function HomeScreen() {
           <Text style={styles.tabText}>Holidays</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.tab}>
-          <Text style={styles.tabText}>Trains/Bus</Text>
+          <Text style={styles.tabText}>Bus</Text>
         </TouchableOpacity>
       </View>
 
@@ -59,7 +56,7 @@ export default function HomeScreen() {
             <ThemedText type="defaultSemiBold">HOLIDAYS</ThemedText>
             <ThemedText type="default">22H:30M</ThemedText>
           </View>
-          <Image source={{ uri: 'https://i.imgur.com/8i2bD36.png' }} style={styles.offerImage} />
+          <Image source={{ uri: 'https://static.vecteezy.com/system/resources/thumbnails/012/955/346/small/traveling-and-holiday-background-free-vector.jpg' }} style={styles.offerImage} />
           <View style={styles.offerDetails}>
             <View style={styles.offerLogos}>
                 <Image source={{ uri: 'https://i.imgur.com/2Y3tW6b.png' }} style={styles.offerLogo} />
@@ -88,6 +85,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    paddingTop: 40
   },
   searchContainer: {
     padding: 20,
