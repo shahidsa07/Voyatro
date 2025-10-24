@@ -1,9 +1,12 @@
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
+import { useRouter } from 'expo-router';
 import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function HomeScreen() {
+  const router = useRouter();
+
   return (
     <ScrollView style={styles.container}>
       <ThemedView style={styles.searchContainer}>
@@ -17,15 +20,15 @@ export default function HomeScreen() {
       </ThemedView>
 
       <View style={styles.categories}>
-      <TouchableOpacity style={styles.category}>
+      <TouchableOpacity style={styles.category} onPress={() => router.push('/category/bus')}>
           <Image source={{ uri: 'https://img.icons8.com/ios-filled/50/E24A4A/bus.png' }} style={styles.categoryIcon} />
           <ThemedText darkColor='black'>BUS/TRAVELLER</ThemedText>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.category}>
+        <TouchableOpacity style={styles.category} onPress={() => router.push('/category/holiday-packages')}>
           <Image source={{ uri: 'https://img.icons8.com/ios-filled/50/E24A4A/beach.png' }} style={styles.categoryIcon} />
           <ThemedText darkColor='black'>HOLIDAY PACKAGES</ThemedText>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.category}>
+        <TouchableOpacity style={styles.category} onPress={() => router.push('/category/resorts')}>
           <Image source={{ uri: 'https://img.icons8.com/ios-filled/50/E24A4A/building.png' }} style={styles.categoryIcon} />
           <ThemedText darkColor='black'>RESORTS</ThemedText>
         </TouchableOpacity>
