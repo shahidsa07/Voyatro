@@ -8,7 +8,7 @@ export default function HomeScreen() {
     <ScrollView style={styles.container}>
       <ThemedView style={styles.searchContainer}>
         <View>
-          <ThemedText type="default">Continue your search</ThemedText>
+          <ThemedText type="default" lightColor="black">Continue your search</ThemedText>
           <ThemedText type="title">to Bangalore</ThemedText>
         </View>
         <TouchableOpacity>
