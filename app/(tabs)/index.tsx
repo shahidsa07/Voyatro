@@ -32,10 +32,10 @@ export default function HomeScreen() {
           <Image source={{ uri: 'https://img.icons8.com/ios-filled/50/E24A4A/building.png' }} style={styles.categoryIcon} />
           <ThemedText darkColor='black'>RESORTS</ThemedText>
         </TouchableOpacity>
-        {/* <TouchableOpacity style={styles.category}>
-          <Image source={{ uri: 'https://img.icons8.com/ios-filled/50/E24A4A/train.png' }} style={styles.categoryIcon} />
-          <ThemedText darkColor='black'>TRAINS/BUS</ThemedText>
-        </TouchableOpacity> */}
+         <TouchableOpacity style={styles.category} onPress={() => router.push('/calendar')}>
+            <Image source={{ uri: 'https://img.icons8.com/ios-filled/50/E24A4A/calendar.png' }} style={styles.categoryIcon} />
+            <ThemedText darkColor='black'>CALENDAR</ThemedText>
+        </TouchableOpacity>
       </View>
 
       <View style={styles.tabs}>
