@@ -73,12 +73,22 @@ export default function CategoryScreen() {
           value={to}
           onChangeText={setTo}
         />
-        <TextInput
-          style={styles.input}
-          placeholder="Date (DD-MM-YYYY)"
-          value={date}
-          onChangeText={setDate}
-        />
+        <TouchableOpacity style={styles.input} onPress={() => setShowCalendar(true)}>
++          <Text>{date}</Text>
++        </TouchableOpacity>
++        <Modal
++          visible={showCalendar}
++          animationType="slide"
++          onRequestClose={() => setShowCalendar(false)}
++        >
++          <Calendar
++            onDayPress={(day) => {
++              setDate(day.dateString);
++              setShowCalendar(false);
++            }}
++            markedDates={{ [date]: { selected: true, selectedColor: '#E24A4A' } }}
++          />
++        </Modal>
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>Search Buses</Text>
         </TouchableOpacity>
